@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const CreateToDo = ({ onAdd }) => {
   const [todo, setToDo] = useState({ title: '', description: '' });
+  const navigate = useNavigate(); // Hook for navigation
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +23,10 @@ const CreateToDo = ({ onAdd }) => {
 
     fetch('http://localhost:3000/todos', configObj)
       .then(res => res.json())
-      .then(data => onAdd(data));
+      .then(data => {
+        onAdd(data);
+        navigate('/')
+      });
   };
 
   return (
