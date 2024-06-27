@@ -1,25 +1,20 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const DeleteToDo = ({ onDelete }) => {
+const DeleteToDo = ({ deleteToDo }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const configObj = {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    // Perform deletion logic when component mounts
+    const handleDelete = () => {
+      deleteToDo(id); // Invoke deleteToDo function with the ID parameter
+      navigate('/'); // Navigate back to the main page or desired route after deletion
     };
 
-    fetch(`http://localhost:3000/todos/${id}`, configObj)
-      .then(res => res.json())
-      .then(() => {
-        onDelete(id);
-        navigate('/');
-      });
-  }, [id, onDelete, navigate]);
+    // Example of handling deletion
+    handleDelete();
+  }, [id, deleteToDo, navigate]);
 
   return (
     <div>

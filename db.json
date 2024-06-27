@@ -1,34 +1,14 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "First To-Do",
-      "description": "This is the first to-do item"
+      "id": "4b20",
+      "title": "Complete Phase-2 Project",
+      "description": "React Coding Project"
     },
     {
-      "id": 2,
-      "title": "Second To-Do",
-      "description": "This is the second to-do item"
-    },
-    {
-      "id": 3,
-      "title": "Need to finish Flatiron before the deadline!!",
-      "description": "Deadline: August 16th"
-    },
-    {
-      "id": 4,
-      "title": "Forth To-Do",
-      "description": "Learning React"
-    },
-    {
-      "id": 4,
-      "title": "Todo 1",
-      "description": "Testing 123"
-    },
-    {
-      "id": 5,
-      "title": "Hello",
-      "description": "testing"
+      "id": "d380",
+      "title": "11",
+      "description": "11"
     }
   ]
 }
