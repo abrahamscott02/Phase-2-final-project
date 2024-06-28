@@ -69,8 +69,8 @@ const App = () => {
     };
 
     const clearCompleted = () => {
-        completedTasks.forEach(id => {
-            fetch(`http://localhost:3000/todos/${id}`, {
+        completedTasks.forEach(task => {
+            fetch(`http://localhost:3000/todos/${task.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const App = () => {
             })
             .then(res => res.json())
             .then(() => {
-                setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+                setTodos(prevTodos => prevTodos.filter(todo => todo.id !== task.id));
             })
         });
         setCompletedTasks([]);
