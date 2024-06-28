@@ -1,10 +1,6 @@
 import React from 'react';
 
-const CompletedToDoList = ({ todos, completedTasks }) => {
-  // const completedTodos = todos.filter(todo => completedTasks.includes(todo.id));
-
-  console.log("CompletedTodos:", completedTasks);
-  console.log("todos:", todos);
+const CompletedToDoList = ({ completedTasks, clearCompleted }) => {
 
   return (
     <div>
@@ -18,6 +14,9 @@ const CompletedToDoList = ({ todos, completedTasks }) => {
           </li>
         ))}
       </ul>
+      {completedTasks.length > 0 && (
+        <button onClick={clearCompleted}>Clear All Completed To-Dos</button> 
+      )}
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 // Importing React and its hooks: useState for managing state, and useEffect for side effects (like data fetching).
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Importing Router components from react-router-dom to handle client-side routing.
 
@@ -10,7 +9,6 @@ import CreateToDo from './components/CreateToDo';
 import DeleteToDo from './components/DeleteToDo';
 import CompletedToDoList from './components/CompletedToDoList';
 // Importing custom components for navigation and displaying different parts of the app.
-
 import './App.css';
 // Importing the CSS file for styling the app.
 
@@ -36,7 +34,6 @@ const App = () => {
     // This function deletes a to-do by its id. After a successful DELETE request to the server,
     // it updates the todos state by filtering out the to-do with the matching id.
     const deleteToDo = (id) => {
-        console.log(`Attempting to delete todo with id: ${id}`); // Log the id in App
         fetch(`http://localhost:3000/todos/${id}`, {
           method: 'DELETE',
           headers: {
@@ -51,7 +48,6 @@ const App = () => {
             return res.json();
           })
           .then(() => {
-            console.log(`Todo with id: ${id} deleted successfully`);
             setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
           })
           .catch(error => console.error('Error deleting todo:', error));
@@ -72,6 +68,22 @@ const App = () => {
         setTodos(todos.filter(todo => todo.id !== todoId));
     };
 
+    const clearCompleted = () => {
+        completedTasks.forEach(id => {
+            fetch(`http://localhost:3000/todos/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(res => res.json())
+            .then(() => {
+                setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+            })
+        });
+        setCompletedTasks([]);
+    }
+
     return (
         <Router>
             <div className="App">
@@ -80,7 +92,7 @@ const App = () => {
                     <Route path="/" element={<ToDoList todos={todos} onComplete={markComplete} deleteToDo={deleteToDo} />} />
                     <Route path="/create" element={<CreateToDo onAdd={addToDo} />} />
                     <Route path="/delete/:id" element={<DeleteToDo deleteToDo={deleteToDo} />} />
-                    <Route path="/completed" element={<CompletedToDoList todos={todos} completedTasks={completedTasks} />} />
+                    <Route path="/completed" element={<CompletedToDoList completedTasks={completedTasks} clearCompleted={clearCompleted} />} />
                 </Routes>
             </div>  
         </Router>
