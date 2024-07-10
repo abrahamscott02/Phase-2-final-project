@@ -14,9 +14,9 @@ const CompletedToDoList = ({ completedTasks, clearCompleted }) => {
           </li>
         ))}
       </ul>
-      {completedTasks.length > 0 && (
-        <button onClick={clearCompleted}>Clear All Completed To-Dos</button> 
-      )}
+      {completedTasks.length > 0 ? (
+    <button id='clearAllBtn' onClick={clearCompleted}>Clear All Completed To-Dos</button>
+) : ''}
     </div>
   );
 };

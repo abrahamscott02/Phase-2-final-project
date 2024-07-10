@@ -1,4 +1,5 @@
 import React from 'react';
+import ToDoCard from './ToDoCard';
 
 const ToDoList = ({ todos, onComplete, deleteToDo }) => {
   const handleComplete = (id) => {
@@ -14,20 +15,13 @@ const ToDoList = ({ todos, onComplete, deleteToDo }) => {
     <div>
       <h2>To-Do List</h2>
       <ul>
-        {todos.map((todo, index) => (
-          <li key={`${todo.id}-${index}`}>
-            <strong>Title:</strong> {todo.title} <br />
-            <strong>Description:</strong> {todo.description}
-            {!todo.completed ? (
-              <>
-                <button onClick={() => handleComplete(todo.id)}>Complete</button>
-                <button onClick={() => handleDelete(todo.id)}>Delete</button>
-              </>
-            ) : (
-              <span>Completed</span>
-            )}
-            <hr />
-          </li>
+        {todos.map(todo => (
+          <ToDoCard
+            key={todo.id} 
+            todo={todo} 
+            onComplete={handleComplete} 
+            onDelete={handleDelete} 
+          />
         ))}
       </ul>
     </div>

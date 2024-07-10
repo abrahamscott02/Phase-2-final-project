@@ -1,19 +1,14 @@
 {
   "todos": [
     {
-      "id": "4b20",
-      "title": "Complete Phase-2 Project",
-      "description": "React Coding Project"
+      "id": "5e04",
+      "title": "Clean house",
+      "description": "Dining room and living room"
     },
     {
-      "id": "faee",
-      "title": "I figured it out!!!!!!!",
-      "description": "I was struggling to get a completed to-do onto the completedToDo page"
-    },
-    {
-      "id": "80b1",
-      "title": "Don't get distracted today",
-      "description": "Learning to code"
+      "id": "83af",
+      "title": "Take out the trash",
+      "description": "Garbage and Recycling"
     }
   ]
 }
