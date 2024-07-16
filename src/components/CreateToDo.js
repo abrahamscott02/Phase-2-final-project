@@ -15,20 +15,18 @@ const CreateToDo = ({ onAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
-    const configObj = {
+    fetch('http://localhost:3000/todos', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
       },
       body: JSON.stringify(todo),
-    };
-    
-    fetch('http://localhost:3000/todos', configObj)
-      .then(res => res.json())
-      .then(data => {
-        onAdd(data); // Add the new to-do to the list 
-        navigate('/')
-      });
+  })
+  .then(res => res.json())
+  .then(data => {
+      onAdd(data); // Add the new to-do to the list 
+      navigate('/')
+  });
   };
 
   return (
